@@ -4774,7 +4774,8 @@ Action.SeekBlessing = new Action("Seek Blessing", {
         Luck: 0.5
     },
     skills: {
-        Divine: 50
+        Divine() {
+		return Math.floor(50 * getFrostGiantsRank().bonus);
     },
     canStart() {
         return resources.pegasus;
