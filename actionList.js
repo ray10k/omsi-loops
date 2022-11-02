@@ -1889,8 +1889,10 @@ Action.BrewPotions = new Action("Brew Potions", {
             case 1:
                 return storyReqs.potionBrewed;
             case 2:
-                return storyReqs.failedBrewPotions;
+                return storyReqs.brew20PotionsInLoop;
             case 3:
+                return storyReqs.failedBrewPotions;
+            case 4:
                 return storyReqs.failedBrewPotionsNegativeRep;
         }
         return false;
@@ -1923,6 +1925,8 @@ Action.BrewPotions = new Action("Brew Potions", {
         addResource("potions", 1);
         handleSkillExp(this.skills);
         unlockStory("potionBrewed");
+        if (resources.potions >= 20)
+            unlockStory("brew20PotionsInLoop");
     },
 });
 
